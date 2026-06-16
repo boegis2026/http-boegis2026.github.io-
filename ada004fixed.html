@@ -1,1 +1,277 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARIA ADA Compliance Issues - Fixed</title>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    color: #222;
+    background: #fff;
+    }
+
+    section {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 18px;
+    }
+
+    .modal {
+    border: 2px solid #333;
+    padding: 15px;
+    margin-top: 10px;
+    }
+
+    .tab {
+    padding: 8px;
+    border: 1px solid #999;
+    background: #eee;
+    }
+
+    .tab[aria-selected="true"] {
+    background: #ddd;
+    font-weight: bold;
+    }
+
+    button,
+    input,
+    table {
+    margin: 6px;
+    }
+
+    table {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+    th,
+    td {
+    border: 1px solid #555;
+    padding: 8px 12px;
+    }
+
+    input:focus,
+    button:focus,
+    a:focus {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+    }
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container text-center">
+
+<header>
+    <h1>ARIA ADA Compliance Issues Demo</h1>
+</header>
+
+<main>
+    <p><a href="#pricing">View pricing</a></p>
+
+<section aria-labelledby="section-one-title">
+<h2 id="section-one-title">1. Fixed aria-labelledby</h2>
+<p>This section now points to an existing heading ID.</p>
+</section>
+
+<section>
+<h2>2. Fixed aria-describedby</h2>
+<label for="description-input">Description</label>
+<p id="description-help">Enter a short description.</p>
+<input id="description-input" type="text" aria-describedby="description-help">
+</section>
+
+<section>
+<h2>3. Valid Button Role</h2>
+<button type="button">Valid button example</button>
+</section>
+
+<section>
+<h2>4. Valid Menu Structure</h2>
+<div role="menu" aria-label="Example menu">
+    <button type="button" role="menuitem">Menu item with menu parent</button>
+</div>
+</section>
+
+<section>
+<h2>5. Real Button With Keyboard Support</h2>
+<button type="button" onclick="alert('Clicked')">Submit</button>
+</section>
+
+<section>
+<h2>6. Keyboard Accessible Action</h2>
+<button type="button" onclick="alert('Opened')">Open details</button>
+</section>
+
+<section>
+<h2>7. Focusable Content Visible to Assistive Technology</h2>
+<button type="button">Visible focusable button</button>
+</section>
+
+<section>
+<h2>8. Important Text Available to Screen Readers</h2>
+<p>This important instruction is available to assistive technology.</p>
+</section>
+
+<section>
+<h2>9. Icon Button With Accessible Name</h2>
+<button type="button" aria-label="Search">
+    <span aria-hidden="true">🔍</span>
+</button>
+</section>
+
+<section>
+<h2>10. Non-Empty ARIA Label</h2>
+<button type="button" aria-label="Save changes">Save</button>
+</section>
+
+<section>
+<h2>11. Matching Visible and Accessible Button Name</h2>
+<button type="button">Download invoice</button>
+</section>
+
+<section>
+<h2>12. aria-expanded With aria-controls</h2>
+<button type="button" aria-expanded="false" aria-controls="filter-panel">Show filters</button>
+<div id="filter-panel">
+    <p>Filter options will appear here.</p>
+</div>
+</section>
+
+<section>
+<h2>13. Working aria-controls</h2>
+<button type="button" aria-expanded="false" aria-controls="details-panel">Open panel</button>
+<div id="details-panel">
+    <p>This is the controlled panel.</p>
+</div>
+</section>
+
+<section>
+<h2>14. Dialog With Accessible Name</h2>
+<div role="dialog" aria-labelledby="help-dialog-title" class="modal">
+    <h3 id="help-dialog-title">Help Information</h3>
+    <p>This dialog has an accessible name.</p>
+    <button type="button">Close</button>
+</div>
+</section>
+
+<section>
+<h2>15. Modal With aria-modal</h2>
+<div role="dialog" aria-modal="true" aria-labelledby="modal-title" class="modal">
+    <h3 id="modal-title">Settings</h3>
+    <p>This modal declares aria-modal.</p>
+    <button type="button">Close</button>
+</div>
+</section>
+
+<section>
+<h2>16. Complete Tabs</h2>
+<div role="tablist" aria-label="Example tabs">
+    <button id="tab-one" class="tab" role="tab" aria-selected="true" aria-controls="panel-one">Tab 1</button>
+    <button id="tab-two" class="tab" role="tab" aria-selected="false" aria-controls="panel-two">Tab 2</button>
+</div>
+
+<div id="panel-one" role="tabpanel" aria-labelledby="tab-one">
+    Panel content for Tab 1.
+</div>
+
+<div id="panel-two" role="tabpanel" aria-labelledby="tab-two" hidden>
+    Panel content for Tab 2.
+</div>
+</section>
+
+<section>
+<h2>17. Removed Invalid aria-selected Usage</h2>
+<p>This paragraph is normal text and is not incorrectly marked as selected.</p>
+</section>
+
+<section>
+<h2>18. Native Checkbox</h2>
+<label>
+    <input type="checkbox" name="subscribe">
+    Subscribe to alerts
+</label>
+</section>
+
+<section>
+<h2>19. Switch With aria-checked</h2>
+<button type="button" role="switch" aria-checked="false">Dark mode</button>
+</section>
+
+<section>
+<h2>20. Progressbar With Values</h2>
+<div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+    Loading 50%
+</div>
+</section>
+
+<section>
+<h2>21. Clear Live Region</h2>
+<div id="save-status" role="status" aria-live="polite">No changes saved yet.</div>
+<button type="button" onclick="document.getElementById('save-status').textContent = 'Saved';">Save</button>
+</section>
+
+<section>
+<h2>22. Required Field Clearly Identified</h2>
+<label for="email">Email <span aria-hidden="true">*</span></label>
+<input id="email" type="email" required aria-describedby="email-required">
+<p id="email-required">Required field.</p>
+</section>
+
+<section>
+<h2>23. Static Table With Correct Markup</h2>
+<table>
+    <caption>Report status</caption>
+    <thead>
+    <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Report</td>
+        <td>Complete</td>
+    </tr>
+    </tbody>
+</table>
+</section>
+
+<section id="pricing">
+<h2>24. Correct Landmark Usage</h2>
+<p>This is regular content and does not use a navigation role incorrectly.</p>
+</section>
+
+<section>
+<h2>25. Meaningful Table Without Presentation Role</h2>
+<table>
+    <caption>Grant amounts</caption>
+    <thead>
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Amount</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Grant</td>
+        <td>$500</td>
+    </tr>
+    </tbody>
+</table>
+</section>
+
+
+</main>
+
+</div>
+</body>
+</html>
 
